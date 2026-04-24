@@ -1,6 +1,6 @@
 /* ===========================
    CRYPTOGRID — style.css
-   Full Rewrite — Fully Responsive
+   Complete Rewrite
    =========================== */
 
 :root {
@@ -13,7 +13,6 @@
   --green-dim: rgba(0,255,135,0.12);
   --red: #ff3b5c;
   --red-dim: rgba(255,59,92,0.12);
-  --gold: #f0b429;
   --text: #e8eaf0;
   --text-muted: #5a6070;
   --text-dim: #8890a0;
@@ -22,12 +21,7 @@
   --font-main: 'Syne', sans-serif;
 }
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -54,15 +48,12 @@ body::before {
 .noise {
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 999;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
-/* ===========================
-   TOPBAR
-   =========================== */
+/* TOPBAR */
 .topbar {
   display: flex;
   align-items: center;
@@ -102,12 +93,11 @@ body::before {
   flex: 1;
   justify-content: center;
   overflow: hidden;
-  min-width: 0;
 }
 
-.ticker-label { color: var(--text-muted); letter-spacing: 2px; font-size: 0.62rem; flex-shrink: 0; }
-.ticker-sep { color: var(--border); flex-shrink: 0; }
-.ticker-item { white-space: nowrap; flex-shrink: 0; }
+.ticker-label { color: var(--text-muted); letter-spacing: 2px; font-size: 0.62rem; }
+.ticker-sep { color: var(--border); }
+.ticker-item { white-space: nowrap; }
 
 .topbar-right {
   display: flex;
@@ -137,7 +127,6 @@ body::before {
   height: 6px;
   border-radius: 50%;
   background: var(--green);
-  flex-shrink: 0;
   animation: pulse 1.6s infinite;
 }
 
@@ -159,16 +148,13 @@ body::before {
   justify-content: center;
   font-size: 0.8rem;
   transition: all 0.2s;
-  flex-shrink: 0;
 }
 
 .refresh-btn:hover { color: var(--green); border-color: rgba(0,255,135,0.3); }
 .refresh-btn.spinning i { animation: spin 0.6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ===========================
-   MAIN
-   =========================== */
+/* MAIN */
 .main {
   max-width: 1400px;
   margin: 0 auto;
@@ -177,9 +163,7 @@ body::before {
   z-index: 1;
 }
 
-/* ===========================
-   STAT CARDS
-   =========================== */
+/* STAT CARDS */
 .stat-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -233,25 +217,17 @@ body::before {
 
 .stat-price {
   font-family: var(--font-mono);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--text);
   margin-bottom: 5px;
-  letter-spacing: 0.5px;
   word-break: break-all;
 }
 
-.stat-change {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
+.stat-change { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; }
 .stat-change.up   { color: var(--green); }
 .stat-change.down { color: var(--red); }
 
-/* ===========================
-   CONTROLS
-   =========================== */
+/* CONTROLS */
 .controls {
   display: flex;
   align-items: center;
@@ -272,7 +248,6 @@ body::before {
   transition: border-color 0.2s;
   flex: 1;
   max-width: 320px;
-  min-width: 0;
 }
 
 .search-wrap:focus-within { border-color: rgba(0,255,135,0.35); }
@@ -286,7 +261,6 @@ body::before {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   width: 100%;
-  min-width: 0;
 }
 
 .search-wrap input::placeholder { color: var(--text-muted); }
@@ -295,11 +269,8 @@ body::before {
   display: flex;
   gap: 6px;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding-bottom: 2px;
 }
-
 .filter-tabs::-webkit-scrollbar { display: none; }
 
 .tab {
@@ -320,22 +291,21 @@ body::before {
 .tab:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
 .tab.active { background: var(--green-dim); border-color: rgba(0,255,135,0.3); color: var(--green); }
 
-/* ===========================
-   TABLE
-   =========================== */
+/* TABLE WRAPPER — handles scrolling on desktop */
 .table-wrap {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  width: 100%;
 }
 
+/* TABLE — desktop has min-width, mobile removes it */
 .token-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 650px;
+  min-width: 700px;
 }
 
 .token-table thead tr {
@@ -399,7 +369,6 @@ body::before {
 .token-symbol { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 1px; margin-top: 1px; }
 
 .td-price { font-family: var(--font-mono); font-size: 0.88rem; color: var(--text); }
-
 .td-change { font-family: var(--font-mono); }
 
 .change-badge {
@@ -415,9 +384,7 @@ body::before {
 .change-badge.up   { background: var(--green-dim); color: var(--green); }
 .change-badge.down { background: var(--red-dim);   color: var(--red); }
 
-.td-mcap,
-.td-vol,
-.td-supply {
+.td-mcap, .td-vol, .td-supply {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-dim);
@@ -425,9 +392,8 @@ body::before {
 
 .td-supply { text-align: right; padding-right: 20px; }
 
-/* Skeleton */
+/* SKELETON */
 .skeleton-row td { padding: 15px 16px; }
-
 .skeleton-cell {
   height: 13px;
   background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
@@ -435,20 +401,13 @@ body::before {
   animation: shimmer 1.4s infinite;
   border-radius: 4px;
 }
-
 @keyframes shimmer {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* ===========================
-   LOAD MORE
-   =========================== */
-.load-more-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
+/* LOAD MORE */
+.load-more-wrap { display: flex; justify-content: center; margin-top: 24px; }
 
 .load-more-btn {
   background: var(--surface);
@@ -466,9 +425,7 @@ body::before {
 .load-more-btn:hover { border-color: rgba(0,255,135,0.3); color: var(--green); }
 .load-more-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* ===========================
-   FOOTER
-   =========================== */
+/* FOOTER */
 .footer {
   display: flex;
   align-items: center;
@@ -490,217 +447,59 @@ body::before {
    RESPONSIVE
    =========================== */
 
-/* Tablet (max 900px) */
+/* Tablet */
 @media (max-width: 900px) {
   .market-ticker { display: none; }
   .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .stat-price { font-size: 1.2rem; }
   .main { padding: 20px 16px 60px; }
   .topbar { padding: 0 20px; }
 }
 
-/* Large Phone (max 600px) */
+/* ===========================
+   MOBILE — complete table rebuild
+   No min-width, fixed layout, 4 columns only
+   =========================== */
 @media (max-width: 600px) {
   .topbar { padding: 0 14px; height: 54px; }
-  .logo-text { font-size: 1rem; }
-
   .stat-cards { gap: 10px; margin-bottom: 16px; }
   .stat-card { padding: 14px; }
-  .stat-price { font-size: 1.05rem; }
+  .stat-price { font-size: 1rem; }
   .stat-label { font-size: 0.6rem; }
-  .stat-change { font-size: 0.75rem; }
+  .stat-change { font-size: 0.72rem; }
 
   .controls { flex-direction: column; align-items: stretch; }
   .search-wrap { max-width: 100%; }
+  .filter-tabs { width: 100%; }
 
-  .token-table th:nth-child(7),
-  .token-table td:nth-child(7) { display: none; }
-  .token-table { min-width: 520px; }
-}
-
-/* Small Phone (max 480px) */
-@media (max-width: 480px) {
-  .topbar { padding: 0 12px; height: 50px; }
-  .logo { font-size: 0.95rem; }
-  .logo-icon { font-size: 1.1rem; }
-
-  .main { padding: 14px 12px 60px; }
-
-  .stat-cards { gap: 8px; margin-bottom: 14px; }
-  .stat-card { padding: 12px; }
-  .stat-price { font-size: 0.95rem; }
-  .stat-label { font-size: 0.58rem; letter-spacing: 1px; }
-  .stat-change { font-size: 0.7rem; }
-
-  .tab { padding: 6px 10px; font-size: 0.68rem; }
-
-  .token-table th:nth-child(6),
-  .token-table td:nth-child(6),
-  .token-table th:nth-child(7),
-  .token-table td:nth-child(7) { display: none; }
-  .token-table { min-width: 400px; }
-
-  .token-table th,
-  .token-table td { padding: 11px 12px; }
-
-  .token-icon { width: 26px; height: 26px; }
-  .token-name { font-size: 0.82rem; }
-  .token-symbol { font-size: 0.62rem; }
-  .td-price { font-size: 0.8rem; }
-  .change-badge { font-size: 0.7rem; padding: 2px 6px; }
-
-  .footer { flex-direction: column; text-align: center; padding: 12px 16px; }
-}
-
-
-
-
-
-
-
-
-
-
-/* Stick rank + token columns on mobile */
-@media (max-width: 900px) {
-  .token-table th:nth-child(1),
-  .token-table td:nth-child(1),
-  .token-table th:nth-child(2),
-  .token-table td:nth-child(2) {
-    position: sticky;
-    left: 0;
-    background: var(--surface);
-    z-index: 2;
+  /* Remove scroll wrapper constraint */
+  .table-wrap {
+    overflow-x: visible;
+    border-radius: 8px;
   }
 
-  .token-table th:nth-child(2),
-  .token-table td:nth-child(2) {
-    left: 48px;
-    box-shadow: 4px 0 8px rgba(0,0,0,0.4);
-  }
-
-  .token-table tbody tr:hover td:nth-child(1),
-  .token-table tbody tr:hover td:nth-child(2) {
-    background: var(--surface2);
-  }
-}
-
-
-
-@media (max-width: 480px) {
+  /* Kill min-width — let table fit screen */
   .token-table {
-    min-width: unset !important;
+    min-width: unset;
     width: 100%;
+    table-layout: fixed;
   }
 
-  /* Show only 4 columns: rank, token, price, 24h% */
-  .token-table th:nth-child(5),
-  .token-table td:nth-child(5),
-  .token-table th:nth-child(6),
-  .token-table td:nth-child(6),
-  .token-table th:nth-child(7),
-  .token-table td:nth-child(7) {
-    display: none !important;
-  }
-
-  .token-table th:nth-child(1),
-  .token-table td:nth-child(1) {
-    width: 30px;
-    padding: 10px 8px;
-  }
-
-  .token-table th:nth-child(2),
-  .token-table td:nth-child(2) {
-    width: 45%;
-    padding: 10px 8px;
-  }
-
-  .token-table th:nth-child(3),
-  .token-table td:nth-child(3) {
-    width: 30%;
-    padding: 10px 8px;
-  }
-
-  .token-table th:nth-child(4),
-  .token-table td:nth-child(4) {
-    width: 25%;
-    padding: 10px 8px;
-  }
-
-  .token-name { font-size: 0.8rem; }
-  .token-symbol { font-size: 0.6rem; }
-  .td-price { font-size: 0.78rem; }
-  .change-badge { font-size: 0.68rem; padding: 2px 5px; }
-  .token-icon { width: 24px; height: 24px; }
-  .token-name-cell { gap: 7px; }
-}
-
-
-
-
-
-
-
-@media (max-width: 480px) {
-  /* Limit token name width */
-  .token-name-cell {
-    max-width: 120px;
-  }
-
-  .token-name {
-    max-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  /* Force price column to show */
-  .token-table th:nth-child(3),
-  .token-table td:nth-child(3) {
-    display: table-cell !important;
-  }
-
-  /* Reduce table min-width so it fits */
-  .token-table {
-    min-width: 320px;
-  }
-
-  /* Hide market cap on small phones */
-  .token-table th:nth-child(5),
-  .token-table td:nth-child(5),
-  .token-table th:nth-child(6),
-  .token-table td:nth-child(6),
-  .token-table th:nth-child(7),
-  .token-table td:nth-child(7) {
+  /* Hide columns 5, 6, 7 */
+  .token-table th:nth-child(n+5),
+  .token-table td:nth-child(n+5) {
     display: none;
   }
-}
 
-@media (max-width: 480px) {
-  .token-table {
-    min-width: unset !important;
-    width: 100%;
-  }
-
-  /* Show only 4 columns: rank, token, price, 24h% */
-  .token-table th:nth-child(5),
-  .token-table td:nth-child(5),
-  .token-table th:nth-child(6),
-  .token-table td:nth-child(6),
-  .token-table th:nth-child(7),
-  .token-table td:nth-child(7) {
-    display: none !important;
-  }
-
+  /* Fixed widths for 4 visible columns */
   .token-table th:nth-child(1),
   .token-table td:nth-child(1) {
-    width: 30px;
-    padding: 10px 8px;
+    width: 32px;
+    padding: 10px 6px;
   }
 
   .token-table th:nth-child(2),
   .token-table td:nth-child(2) {
-    width: 45%;
+    width: 42%;
     padding: 10px 8px;
   }
 
@@ -712,15 +511,16 @@ body::before {
 
   .token-table th:nth-child(4),
   .token-table td:nth-child(4) {
-    width: 25%;
+    width: 24%;
     padding: 10px 8px;
   }
 
-  .token-name { font-size: 0.8rem; }
+  .token-icon { width: 26px; height: 26px; }
+  .token-name { font-size: 0.8rem; max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
   .token-symbol { font-size: 0.6rem; }
+  .token-name-cell { gap: 7px; }
   .td-price { font-size: 0.78rem; }
   .change-badge { font-size: 0.68rem; padding: 2px 5px; }
-  .token-icon { width: 24px; height: 24px; }
-  .token-name-cell { gap: 7px; }
-}
 
+  .footer { flex-direction: column; text-align: center; }
+}
