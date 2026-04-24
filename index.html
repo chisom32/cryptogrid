@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CryptoGrid — Live Crypto Market Dashboard</title>
+
+  <!-- SEO -->
+  <meta name="description" content="CryptoGrid — Live crypto market dashboard. Track real-time token prices, market cap and 24h changes for top cryptocurrencies." />
+  <meta name="keywords" content="crypto, cryptocurrency, bitcoin, ethereum, market cap, live prices, crypto dashboard" />
+  <meta name="author" content="Drills" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CryptoGrid — Live Crypto Dashboard" />
+  <meta property="og:description" content="Track real-time crypto prices, market cap and 24h changes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cryptogrid.vercel.app" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise"></div>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">CryptoGrid</span>
+    </div>
+
+    <div class="market-ticker" id="marketTicker">
+      <span class="ticker-label">MARKET</span>
+      <span class="ticker-item" id="tickerMcap">MCAP —</span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item" id="tickerVol">VOL —</span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item" id="tickerBtcDom">BTC DOM —</span>
+    </div>
+
+    <div class="topbar-right">
+      <div class="live-badge"><span class="pulse"></span> LIVE</div>
+      <button class="refresh-btn" id="refreshBtn" title="Refresh">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- STAT CARDS -->
+    <section class="stat-cards" id="statCards">
+      <div class="stat-card" id="statBtc">
+        <div class="stat-label">BITCOIN</div>
+        <div class="stat-price" id="btcPrice">—</div>
+        <div class="stat-change" id="btcChange">—</div>
+      </div>
+      <div class="stat-card" id="statEth">
+        <div class="stat-label">ETHEREUM</div>
+        <div class="stat-price" id="ethPrice">—</div>
+        <div class="stat-change" id="ethChange">—</div>
+      </div>
+      <div class="stat-card" id="statBnb">
+        <div class="stat-label">BNB</div>
+        <div class="stat-price" id="bnbPrice">—</div>
+        <div class="stat-change" id="bnbChange">—</div>
+      </div>
+      <div class="stat-card" id="statSol">
+        <div class="stat-label">SOLANA</div>
+        <div class="stat-price" id="solPrice">—</div>
+        <div class="stat-change" id="solChange">—</div>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search token..." />
+      </div>
+      <div class="filter-tabs">
+        <button class="tab active" data-sort="rank">Rank</button>
+        <button class="tab" data-sort="price">Price</button>
+        <button class="tab" data-sort="change">24h %</button>
+        <button class="tab" data-sort="mcap">Market Cap</button>
+      </div>
+    </div>
+
+    <!-- TOKEN TABLE -->
+    <section class="table-wrap">
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Token</th>
+            <th>Price</th>
+            <th>24h %</th>
+            <th>Market Cap</th>
+            <th>24h Volume</th>
+            <th>Circulating Supply</th>
+          </tr>
+        </thead>
+        <tbody id="tokenTableBody">
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- LOAD MORE -->
+    <div class="load-more-wrap">
+      <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <span>Data by <a href="https://coingecko.com" target="_blank">CoinGecko</a></span>
+    <span>Built by <strong>Drills</strong></span>
+    <span id="lastUpdated">—</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
