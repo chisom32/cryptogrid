@@ -587,7 +587,53 @@ body::before {
 
 
 
+@media (max-width: 480px) {
+  .token-table {
+    min-width: unset !important;
+    width: 100%;
+  }
 
+  /* Show only 4 columns: rank, token, price, 24h% */
+  .token-table th:nth-child(5),
+  .token-table td:nth-child(5),
+  .token-table th:nth-child(6),
+  .token-table td:nth-child(6),
+  .token-table th:nth-child(7),
+  .token-table td:nth-child(7) {
+    display: none !important;
+  }
+
+  .token-table th:nth-child(1),
+  .token-table td:nth-child(1) {
+    width: 30px;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(2),
+  .token-table td:nth-child(2) {
+    width: 45%;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(3),
+  .token-table td:nth-child(3) {
+    width: 30%;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(4),
+  .token-table td:nth-child(4) {
+    width: 25%;
+    padding: 10px 8px;
+  }
+
+  .token-name { font-size: 0.8rem; }
+  .token-symbol { font-size: 0.6rem; }
+  .td-price { font-size: 0.78rem; }
+  .change-badge { font-size: 0.68rem; padding: 2px 5px; }
+  .token-icon { width: 24px; height: 24px; }
+  .token-name-cell { gap: 7px; }
+}
 
 
 
@@ -629,3 +675,52 @@ body::before {
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .token-table {
+    min-width: unset !important;
+    width: 100%;
+  }
+
+  /* Show only 4 columns: rank, token, price, 24h% */
+  .token-table th:nth-child(5),
+  .token-table td:nth-child(5),
+  .token-table th:nth-child(6),
+  .token-table td:nth-child(6),
+  .token-table th:nth-child(7),
+  .token-table td:nth-child(7) {
+    display: none !important;
+  }
+
+  .token-table th:nth-child(1),
+  .token-table td:nth-child(1) {
+    width: 30px;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(2),
+  .token-table td:nth-child(2) {
+    width: 45%;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(3),
+  .token-table td:nth-child(3) {
+    width: 30%;
+    padding: 10px 8px;
+  }
+
+  .token-table th:nth-child(4),
+  .token-table td:nth-child(4) {
+    width: 25%;
+    padding: 10px 8px;
+  }
+
+  .token-name { font-size: 0.8rem; }
+  .token-symbol { font-size: 0.6rem; }
+  .td-price { font-size: 0.78rem; }
+  .change-badge { font-size: 0.68rem; padding: 2px 5px; }
+  .token-icon { width: 24px; height: 24px; }
+  .token-name-cell { gap: 7px; }
+}
+
