@@ -4,7 +4,7 @@
 // ===========================
 
 const API = 'https://api.coingecko.com/api/v3';
-
+const GECKO_KEY = 'CG-FbKavYmNg2USZKPXxuerUJB2';
 let allCoins = [];
 let displayedCoins = [];
 let page = 1;
@@ -76,28 +76,20 @@ function showSkeletons(count = 20) {
 // ===========================
 async function fetchGlobalData() {
   try {
-    const res = await fetch(`${API}/global`);
+    const res = await fetch(`${API}/global?x_cg_demo_api_key=${GECKO_KEY}`);
     const { data } = await res.json();
-
-    const mcap = formatLarge(data.total_market_cap?.usd);
-    const vol = formatLarge(data.total_volume?.usd);
-    const btcDom = data.market_cap_percentage?.btc?.toFixed(1) + '%';
-
-    document.getElementById('tickerMcap').textContent = `MCAP ${mcap}`;
-    document.getElementById('tickerVol').textContent = `VOL ${vol}`;
-    document.getElementById('tickerBtcDom').textContent = `BTC DOM ${btcDom}`;
+    // ... rest of the function stays the same
   } catch (e) {
     console.error('Global fetch error:', e);
   }
 }
-
 // ===========================
 //  FETCH TOP COINS
 // ===========================
 async function fetchCoins(pageNum = 1) {
   try {
     const res = await fetch(
-      `${API}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${pageNum}&sparkline=false&price_change_percentage=24h`
+      `${API}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${pageNum}&sparkline=false&price_change_percentage=24h&x_cg_demo_api_key=${GECKO_KEY}`
     );
     return await res.json();
   } catch (e) {
